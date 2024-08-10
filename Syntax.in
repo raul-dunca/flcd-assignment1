@@ -1,0 +1,40 @@
+
+- some conditions will be imposed on the way the identifiers and constants can be formed:
+
+i) Identifiers: no more than 50 characters
+
+ii) constants: corresponding to your types
+
+
+
+
+program := declaration stmt{declaration | stmt} 
+
+declaration := typedecl | namesdecl 
+typedecl := type IDENTIFIER{","IDENTIFIER} ";"
+type := "int" | "string" 
+namesdecl := "names" IDENTIFIER "{" nr "}" {","IDENTIFIER "{" nr "}"} ";"
+nr := non_zero_digit{digit}
+
+expression := term{operation term}
+term:= "(" expression ")" | IDENTIFIER | constint 
+operation := "+" | "-" | "*" | "/"
+
+condition := negationcond | normcondition
+negationcond := "!" "(" condition ")"
+normcondition:= expression relation expression
+relation := "<" | ">" | "<=" | ">=" | "==" | "!="
+
+assignstmt := IDENTIFIER "=" expression ";"
+iostmt := "in" "(" IDENTIFIER ")" ";" | "out" "(" IDENTIFIER ")" ";" | "out" "(" constring{ "+" (IDENTIFIER | costring)} ")" ";"
+ifstmt := "if" "(" condition ")"  "[" stmt "]" {"elif" "(" condition ")" "[" stmt "]"} ["else" "[" stmt "]" ] 
+loopstmt := "loop" "(" condition ")" "[" stmt "]" |  "loop" "(" forcond ")" "[" stmt "]"
+forcond := assignstmt condition ";" specialstmt
+specialstmt := IDENTIFIER "$" ";" | IDENTIFIER "~" ";"
+breakstmt := "break" ";"
+
+stmt := allstmt{allstmt}
+allstmt := simplstmt | structstmt
+simplestmt := assignstmt | iostmt | specialstmt | breakstmt
+structstmt := ifstmt | loopstmt 
+

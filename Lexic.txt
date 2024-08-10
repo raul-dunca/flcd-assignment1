@@ -1,0 +1,45 @@
+Data types: int, string, names
+
+Alphabet:
+a) Upper (A-Z) and lower (a-z) case letters of the English alphabet
+b) Devicaml digits (0-9)
+c) Underline character (_)
+
+Lexic:
+a) Special symbols, representing:
+- operators: + - * / $ ~ % < > <= >= == = != !
+- separators: [ ] { } ; space , ( ) \n \t
+- reserved words: int string if elif else loop names in out break
+
+b) Identifiers:
+- a sequence of letters, digits and underline charachter, such that the first 
+  characther is a letter the rule is:
+	identifier := letter{letterordigitor_}
+	letter := "A" | "B" | ... | "Z" | "a" | "b" | ... | "z"
+	letterordigitor_ := "A" | "B" | ... | "Z" | "a" | "b" | ... | "z" | "0" | "1" | ... | "9" | "_"
+
+c) Constans:
+
+1) integer - rule:
+	constint := "0" | [sign] unsigned_int
+	sign :=  "-"
+	unsigned_int := non_zero_digit{digit}
+	non_zero_digit := "1" | "2" | ... | "9"
+	digit := "0" | "1" | "2" | ... | "9"
+
+2) string - rule:
+	conststring := "string"
+	string := char{char}
+	char := letter | digit
+
+
+ 
+	
+
+
+
+	
+	
+
+
+	
